@@ -1,9 +1,9 @@
-﻿namespace Lekce3_1
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Lekce3_1
 {
 
 
-    //Ukol - Napiste funkci, ktera umi detekovat, ze se jedna o palindrom (zatim jen u slov) a pak z pole vypiste jen palindromy
-    //string[] slova = new string[] { "kajak", "program", "rotor", "Czechitas", "madam", "Jarda", "radar", "nepotopen" }; 
 
     internal class Program
     {
@@ -63,7 +63,7 @@
             string desifrovanyText = new string(poleZnaku);
             Console.WriteLine(desifrovanyText);
         }
-        */
+       
 
         //Ukol - Obratte poradi stringu
         //string palindrom = "Kuna nese nanuk"; 
@@ -94,8 +94,55 @@
 
             Console.WriteLine($"Obrácený palindrom:{obracenyPalindrom}");
         }
+        */
+
+
+        //Ukol - Napiste funkci, ktera umi detekovat, ze se jedna o palindrom (zatim jen u slov) a pak z pole vypiste jen palindromy
+        //string[] poleSlov = new string[] { "kajak", "program", "rotor", "Czechitas", "madam", "Jarda", "radar", "nepotopen" }; 
+
+        static void Main()
+        {
+
+            string[] poleSlov = new string[] { "kajak", "program", "rotor", "Czechitas", "madam", "Jarda", "radar", "nepotopen" };
+
+            //pro každé poleSlov zjistím, jesli je v původní a převrácené podobě stejné, resp. jesli se shoduje do poloviny 
+            //poduk ano
+            //vypsat palindromy
+
+            Console.WriteLine($"Palindromy z daných slov jsou:");
+
+            for (int i = 0; i < poleSlov.Length; i++)
+            {
+                string aktualniSlovo = poleSlov[i];
+                bool JePalindrom = true;
+
+                int poradiPismenkaZacatekSlova = 0;
+                int poradiPismenkaKonecSlova = aktualniSlovo.Length - 1;
+
+                while (poradiPismenkaZacatekSlova < poradiPismenkaKonecSlova)
+                {
+                    if (char.ToUpper(aktualniSlovo[poradiPismenkaZacatekSlova]) != char.ToUpper(aktualniSlovo[poradiPismenkaKonecSlova]))
+                    {
+                        JePalindrom = false;
+                        break;
+                    }
+                    poradiPismenkaZacatekSlova++;
+                    poradiPismenkaKonecSlova--;
+                }
+                if (JePalindrom)
+                {
+                    Console.WriteLine(aktualniSlovo);
+                }
+
+
+            }
+
+        }
     }
 }
+      
+
+
 
 
 
