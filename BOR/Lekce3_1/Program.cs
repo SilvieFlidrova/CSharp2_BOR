@@ -1,7 +1,6 @@
 ﻿namespace Lekce3_1
 {
-    //Ukol - Obratte poradi stringu
-    //string palindrom = "Kuna nese nanuk"; 
+
 
     //Ukol - Napiste funkci, ktera umi detekovat, ze se jedna o palindrom (zatim jen u slov) a pak z pole vypiste jen palindromy
     //string[] slova = new string[] { "kajak", "program", "rotor", "Czechitas", "madam", "Jarda", "radar", "nepotopen" }; 
@@ -43,31 +42,65 @@
 
                string opravenyText = new string(pismeno);
                Console.WriteLine(opravenyText);
-        */
+        
 
         //Ukol - rozsifrujte tuto zpravu - capsLock byl zasifrovan tak, ze jsme kazde pismeno posunuli o jedno doprava: 'a' -> 'b'. 
         //string sifra = "Wzcpsob!qsbdf!.!hsbuvmvkj!b!ktfn!ob!Ufcf!qztoz";
         static void Main()
         {
             string zasifrovanyText = "Wzcpsob!qsbdf!.!hsbuvmvkj!b!ktfn!ob!Ufcf!qztoz";
-            char[] znaky = zasifrovanyText.ToCharArray();
+            char[] poleZnaku = zasifrovanyText.ToCharArray();
 
             for (int i = 0; i < zasifrovanyText.Length; i++)
             {
                 //pro každý znak pole provedu posunutí o jedno doleva, tj. musím ho zmenšit o 1
                 
-                char znak = znaky[i];
+                char znak = poleZnaku[i];
                 char posunutyZnak = (char)(znak - 1);
-                znaky[i] = posunutyZnak;
+                poleZnaku[i] = posunutyZnak;
             }
 
-            string desifrovanyText = new string(znaky);
+            string desifrovanyText = new string(poleZnaku);
             Console.WriteLine(desifrovanyText);
         }
+        */
 
-            
+        //Ukol - Obratte poradi stringu
+        //string palindrom = "Kuna nese nanuk"; 
+        static void Main()
+        {
+            string palindrom = "Kuna nese nanuk";
+
+            char[] poleZnaku = palindrom.ToCharArray();
+            // Převedení stringu na pole znaků
+
+            // Ukazatele pro první(i) a poslední(j) znak v poli
+            int i = 0;
+            int j = poleZnaku.Length - 1;
+
+            // Prohození znaků 
+            while (i < j)
+            {
+                char mezipamet = poleZnaku[i];
+                poleZnaku[i] = poleZnaku[j];
+                poleZnaku[j] = mezipamet;
+
+                i++;
+                j--;
+            }
+
+            // Vytvoření nového stringu z obráceného pole znaků
+            string obracenyPalindrom = new string(poleZnaku);
+
+            Console.WriteLine($"Obrácený palindrom:{obracenyPalindrom}");
         }
     }
+}
+
+
+
+ 
+  
 
     
 
